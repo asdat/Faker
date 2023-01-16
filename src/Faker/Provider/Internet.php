@@ -190,11 +190,17 @@ class Internet extends Base
      *
      * @return string
      */
-    public function url()
+    public function url($isHttpsOnly = false)
     {
         $format = static::randomElement(static::$urlFormats);
 
-        return $this->generator->parse($format);
+        $url = $this->generator->parse($format);
+
+        if ($isHttpsOnly) {
+            return str_ireplace('http://', 'https://', $url);
+        }
+
+        return $url;
     }
 
     /**

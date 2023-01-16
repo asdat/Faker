@@ -327,7 +327,7 @@ use Faker\Container\ContainerInterface;
  *
  * @property string $url
  *
- * @method string url()
+ * @method string url($isHttpsOnly = false)
  *
  * @property string $slug
  *
