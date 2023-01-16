@@ -98,6 +98,13 @@ final class InternetTest extends TestCase
         self::assertNotFalse(filter_var($this->faker->url(), FILTER_VALIDATE_URL));
     }
 
+    public function testUrlIsHttpsValid(): void
+    {
+        $url = $this->faker->url(true);
+        self::assertNotFalse(filter_var($url, FILTER_VALIDATE_URL));
+        self::assertNotFalse(stripos($url, 'https://'));
+    }
+
     public function testLocalIpv4(): void
     {
         self::assertNotFalse(filter_var($this->faker->localIpv4(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4));
